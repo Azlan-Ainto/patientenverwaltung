@@ -3,46 +3,47 @@
 from datetime import date
 from patverw import PatientVerwaltung
 
+def datum_einlesen(text:str)->date:
+    jahr, monat, tag = map(int, input(text).split("-"))
+    return date(jahr, monat, tag)
+
+def zeige_menue() -> None:
+    print("Menü:")
+    print("1. Patient hinzufügen")
+    print("2. Alle Patienten anzeigen")
+    print("3. Patient suchen")
+    print("4. Patient entfernen")
+    print("5. Beenden")
+
 def main() -> None:
+
     praxis = PatientVerwaltung()
-    praxis.patient_hinzufuegen(
-        "Anna",
-        "Muster",
-        date(1980, 6, 15),
-        "1234567890"
-    )
-    praxis.patient_hinzufuegen(
-        "Ben",
-        "Beispiel",
-        date(1975, 3, 22),
-        "0987654321"
-    )
-    praxis.patient_hinzufuegen(
-        "Max", 
-        "Mustermann", 
-        date(1990, 1, 1), 
-        "0123456789")
-    praxis.patient_hinzufuegen(
-        "Erika", 
-        "Musterfrau", 
-        date(1995, 5, 15), 
-        "9876543210")
-    praxis.patient_hinzufuegen(
-        "John",
-        "Doe",
-        date(1985, 12, 31),
-        "5551234567")
-    # Patienten nach Nachnamen suchen
-    # Alle Patienten anzeigen
-    print("Alle Patienten in der Praxis:")
-    for patient in praxis.alle_patienten_anzeigen():
-        print(patient)
 
-    print("\nSuche nach Nachnamen suchen:")
-    nachname = "Muster"
-    for patient in praxis.patient_suchen(nachname):
-        print(patient)
+    zeige_menue()
+    auswahl = input ("Bitte wählen Sie eine Option (1-5): ").strip()
+    if auswahl == "1":
+        vorname = input("Vorname: ")
+        nachname = input("Nachname: ")
+        geburtsdatum = datum_einlesen("Geburtsdatum (JJJJ-MM-TT): ")
+        telefonnummer = input("Telefonnummer: ")    
+        praxis.patient_hinzufuegen(vorname, nachname, geburtsdatum, telefonnummer)
+    elif auswahl == "2":
+        for patient in praxis.alle_patienten_anzeigen():
+            print(patient)
+    elif auswahl == "3":
+        nachname = input("Nachname: ")
+        for patient in praxis.patient_suchen(nachname):
+            print(patient)
+    elif auswahl == "4":
+        patient_id = int(input("Patienten-ID: "))
+        if praxis.patient_entfernen(patient_id):
+            print("Patient erfolgreich entfernt.")
+        else:
+            print("Patient nicht gefunden.")
+    elif auswahl == "5":
+        print("Programm beendet.")
+    else:
+        print("Ungültige Auswahl. Bitte wählen Sie eine Option von 1 bis 5.")
     
-
 if __name__ == "__main__":
     main()
