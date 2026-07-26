@@ -3,3 +3,5 @@ __pycach__/
 .venv/
 ventv/
 .env
+*.egg-info/
+.pytest_cache/

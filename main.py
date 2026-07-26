@@ -13,7 +13,9 @@ def zeige_menue() -> None:
     print("2. Alle Patienten anzeigen")
     print("3. Patient suchen")
     print("4. Patient entfernen")
-    print("5. Beenden")
+    print("5. Telefonnummer ändern")
+    print("6. Beenden")
+
 
 def main() -> None:
 
@@ -41,9 +43,16 @@ def main() -> None:
         else:
             print("Patient nicht gefunden.")
     elif auswahl == "5":
+        patient_id = int(input("Patienten-ID: "))
+        neue_telefonnummer = input("Neue Telefonnummer: ")
+        if praxis.patient_telefonnummer_aendern(patient_id, neue_telefonnummer):
+            print("Telefonnummer erfolgreich geändert.")
+        else:
+            print("Patient nicht gefunden.")
+    elif auswahl == "6":
         print("Programm beendet.")
     else:
-        print("Ungültige Auswahl. Bitte wählen Sie eine Option von 1 bis 5.")
-    
+        print("Ungültige Auswahl. Bitte wählen Sie eine Option von 1 bis 6.")
+
 if __name__ == "__main__":
     main()

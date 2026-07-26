@@ -37,5 +37,20 @@ class PatientVerwaltung:
             if patient.nachname.lower() == gesuchte_patienten
         ]
 
-     
+    def patient_entfernen(self, patient_id:int) -> bool:
+        for index, patient in enumerate(self._patienten):
+            if patient.patient_id == patient_id:
+                del self._patienten[index]
+                return True
+        return False
+
+    def patient_telefonnummer_aendern(self, patient_id:int, neue_telefonnummer:str) -> bool:
+        for patient in self._patienten:
+            if patient.patient_id == patient_id:
+                patient.telefonnummer = neue_telefonnummer
+                return True
+        return False
+
+    def patient_anzahl(self) -> int:
+        return len(self._patienten)
     
