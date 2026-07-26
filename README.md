@@ -1,6 +1,6 @@
 # Patientenverwaltung
-## Autor:  Azlan Ainto
-## erstell am 26.07.2026
+## Softwareentwickler:  Azlan Ainto
+## Github Repo erstellt am 26.07.2026
 
 Eine moderne Software zur Verwaltung von Patienten in einem Krankenhaus. Das System ermöglicht die Erfassung, Verwaltung und Suche von Patientendaten und dient als praxisnahes Beispiel für die Entwicklung einer objektorientierten Anwendung mit Python.
 
