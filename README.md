@@ -1,3 +1,6 @@
+# Autor:
+## Azlan Ainto
+## erstell am 26.07.2026
 # Patientenverwaltung
 
 Eine moderne Software zur Verwaltung von Patienten in einem Krankenhaus. Das System ermöglicht die Erfassung, Verwaltung und Suche von Patientendaten und dient als praxisnahes Beispiel für die Entwicklung einer objektorientierten Anwendung mit Python.
@@ -70,11 +73,6 @@ python main.py
 
 Das Projekt wurde für **Visual Studio Code** entwickelt und kann dort direkt geöffnet werden.
 
-Empfohlene Erweiterungen:
-
-- Python
-- Pylance
-- GitLens
 
 ## Projektziel
 
