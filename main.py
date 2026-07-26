@@ -26,6 +26,9 @@ def main() -> None:
     if auswahl == "1":
         vorname = input("Vorname: ")
         nachname = input("Nachname: ")
+        if not vorname or not nachname:
+            print("Vorname und Nachname dürfen nicht leer sein.")
+            return
         geburtsdatum = datum_einlesen("Geburtsdatum (JJJJ-MM-TT): ")
         telefonnummer = input("Telefonnummer: ")    
         praxis.patient_hinzufuegen(vorname, nachname, geburtsdatum, telefonnummer)
