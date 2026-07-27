@@ -12,7 +12,7 @@ Eine moderne Software zur Verwaltung von Patienten in einem Krankenhaus. Das Sys
 - Übersicht aller gespeicherten Patienten
 - Objektorientierter Aufbau mit mehreren Klassen
 - Einfache Erweiterbarkeit für zukünftige Funktionen
-- - Patienten hinzufügen, suchen, entfernen und aktualisieren
+- - Patienten hinzufügen, suchen und aktualisieren
 - Freitext-Notizen je Patient
 - Persistente Speicherung als JSON-Datei
 ## Technologien
