@@ -14,15 +14,14 @@ def zeige_menue() -> None:
     print("3. Patient suchen")
     print("4. Patient entfernen")
     print("5. Telefonnummer ändern")
-    print("6. Beenden")
+    print("6. Notizen hinzufügen")
+    print("7. Programm beenden")
 
 
 def main() -> None:
-
     praxis = PatientVerwaltung()
-
     zeige_menue()
-    auswahl = input ("Bitte wählen Sie eine Option (1-5): ").strip()
+    auswahl = input ("Bitte wählen Sie eine Option (1-7): ").strip()
     if auswahl == "1":
         vorname = input("Vorname: ")
         nachname = input("Nachname: ")
@@ -53,9 +52,16 @@ def main() -> None:
         else:
             print("Patient nicht gefunden.")
     elif auswahl == "6":
+        patient_id = int(input("Patienten-ID: "))
+        notizen = input("Notizen: ")
+        if praxis.patienten_setzen(patient_id, notizen):
+            print("Notizen erfolgreich hinzugefügt.")
+        else:
+            print("Patient nicht gefunden.")
+    elif auswahl == "7":
         print("Programm beendet.")
     else:
-        print("Ungültige Auswahl. Bitte wählen Sie eine Option von 1 bis 6.")
+        print("Ungültige Auswahl. Bitte wählen Sie eine Option von 1 bis 7.")
 
 if __name__ == "__main__":
     main()
