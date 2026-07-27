@@ -1,7 +1,9 @@
 """ Verwatungslogik für die Patienten der Arztpraxis."""
 from patient import Patient
 from datetime import date
-
+import json
+from pathlib import Path
+DATENDATEI = Path("patienten.json")
 class PatientVerwaltung:
 
     def __init__(self)-> None:
@@ -53,4 +55,44 @@ class PatientVerwaltung:
 
     def patient_anzahl(self) -> int:
         return len(self._patienten)
-    
+
+    def patienten_setzen(self, patient_id: int, text:str)->bool:
+        for patient in self._patienten:
+            if patient.patient_id == patient_id:
+                patient.notizen = text
+                return True
+        return False
+
+    def patienten_speichern(self, dateipfad: Path=DATENDATEI) -> None:
+        daten = [
+            {
+                "patient_id": patient.patient_id,
+                "vorname": patient.vorname,
+                "nachname": patient.nachname,
+                "geburtsdatum": patient.geburtsdatum.isoformat(),
+                "telefonnummer": patient.telefonnummer,
+                "notizen": patient.notizen
+            }
+            for patient in self._patienten
+        ]
+        dateipfad.write_text(json.dumps(daten, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    def patienten_laden(self, dateipfad: Path=DATENDATEI) -> None:
+        if not dateipfad.exists():
+            return
+        daten = json.loads(dateipfad.read_text(encoding="utf-8"))
+        self._patienten = [
+            Patient(
+                patient_id = eintrag["patient_id"],
+                vorname = eintrag["vorname"],
+                nachname = eintrag["nachname"],
+                geburtsdatum = date.fromisoformat(eintrag["geburtsdatum"]),
+                telefonnummer = eintrag.get("telefonnummer", ""),
+                notizen = eintrag.get("notizen", "")
+            )
+            for eintrag in daten
+        ]
+        if self._patienten:
+            self._naechste_id = max(patient.patient_id for patient in self._patienten) + 1
+        else:
+            self._naechste_id = 1
