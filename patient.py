@@ -15,5 +15,7 @@ class Patient:
 
     def __str__(self) -> str:
         datum = self.geburtsdatum.strftime("%d.%m.%Y")
-        return f"[{self.patient_id} {self.vorname} {self.nachname}, geb. {datum}, Tel.: {self.telefonnummer}]"
+        return f"[{self.patient_id}] {self.vorname} {self.nachname} (geb. {datum}, Tel: {self.telefonnummer or '-'})"
+    
+
     
