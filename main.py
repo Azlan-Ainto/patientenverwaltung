@@ -22,7 +22,7 @@ def zeige_menue() -> None:
 
 
 def main() -> None:
-    praxis = Patientenverwaltung()
+    praxis = PatientVerwaltung()
     praxis.patienten_laden()
 
     while True:
