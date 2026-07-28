@@ -89,9 +89,8 @@ def main() -> None:
                 print(f"Jüngster Patient: {stats['juengster']}")
 
         elif auswahl == "9":
-            print("Auf Wiedersehen!")
+            print("Programm wird beendet.")
             break
-
         else:
             print("Ungültige Auswahl, bitte erneut versuchen.")
 
