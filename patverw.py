@@ -6,9 +6,29 @@ from pathlib import Path
 DATENDATEI = Path("patienten.json")
 class PatientVerwaltung:
 
+
     def __init__(self)-> None:
         self._patienten : list[Patient] = []
         self._naechste_id = 1
+
+    def statistik(self) -> dict:
+        if not self._patienten:
+            return {"anzahl": 0, "durchschnittsalter": 0.0, "aeltester": None, "juengster": None}
+        heute = date.today()
+        alter_liste = [
+            heute.year
+            - p.geburtsdatum.year
+            - ((heute.month, heute.day) < (p.geburtsdatum.month, p.geburtsdatum.day))
+            for p in self._patienten
+        ]
+        return {
+            "anzahl": len(self._patienten),
+            "durchschnittsalter": sum(alter_liste) / len(alter_liste),
+            "aeltester": min(self._patienten, key=lambda p: p.geburtsdatum),
+            "juengster": max(self._patienten, key=lambda p: p.geburtsdatum),
+        }
+    def patienten_sortieren(self) -> list[Patient]:
+        return sorted(self._patienten, key=lambda patient: patient.nachname.lower())
 
     def patient_hinzufuegen(self,
             vorname: str,
