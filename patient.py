@@ -14,6 +14,7 @@ class Patient:
     notizen: str=""
 
     def __str__(self) -> str:
-        datum = self.geburtsdatum.strftime("%d.%m.%Y")
-        return f"[{self.patient_id} {self.vorname} {self.nachname}, geb. {datum}, Tel.: {self.telefonnummer}]"
+            datum = self.geburtsdatum.strftime("%d.%m.%Y")
+            notiz_hinweis = " [Notiz vorhanden]" if self.notizen else ""
+            return f"[{self.patient_id}] {self.vorname} {self.nachname} (geb. {datum}){notiz_hinweis}"
     
