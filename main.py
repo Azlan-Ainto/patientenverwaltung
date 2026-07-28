@@ -89,7 +89,11 @@ def main() -> None:
                 print(f"Jüngster Patient: {stats['juengster']}")
 
         elif auswahl == "9":
+<<<<<<< HEAD
             print("Programm wird beendet.")
+=======
+            print("Bis bald in der Patientenverwaltung!")
+>>>>>>> feature/abschiedstext
             break
         else:
             print("Ungültige Auswahl, bitte erneut versuchen.")
