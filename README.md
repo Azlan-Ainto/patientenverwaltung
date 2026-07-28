@@ -15,6 +15,7 @@ Eine moderne Software zur Verwaltung von Patienten in einem Krankenhaus. Das Sys
 - - Patienten hinzufügen, suchen und aktualisieren
 - Freitext-Notizen je Patient
 - Persistente Speicherung als JSON-Datei
+- Sortierte und statistische Auswertung der Patientenliste
 ## Technologien
 
 - **Programmiersprache:** Python 3
