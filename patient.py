@@ -11,6 +11,7 @@ class Patient:
     nachname: str
     geburtsdatum: date
     telefonnummer: str=""
+    notizen: str=""
 
     def __str__(self) -> str:
         datum = self.geburtsdatum.strftime("%d.%m.%Y")
