@@ -27,8 +27,6 @@ class PatientVerwaltung:
             "aeltester": min(self._patienten, key=lambda p: p.geburtsdatum),
             "juengster": max(self._patienten, key=lambda p: p.geburtsdatum),
         }
-    def patienten_sortieren(self) -> list[Patient]:
-        return sorted(self._patienten, key=lambda patient: patient.nachname.lower())
 
     def patient_hinzufuegen(self,
             vorname: str,
@@ -96,6 +94,8 @@ class PatientVerwaltung:
             for patient in self._patienten
         ]
         dateipfad.write_text(json.dumps(daten, ensure_ascii=False, indent=2), encoding="utf-8")
+    def patienten_sortiert(self, absteigend: bool = False) -> list[Patient]:
+        return sorted(self._patienten, key=lambda p: p.nachname.lower(), reverse=absteigend)
 
     def patienten_laden(self, dateipfad: Path=DATENDATEI) -> None:
         if not dateipfad.exists():
