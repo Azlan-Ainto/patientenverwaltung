@@ -7,10 +7,20 @@ DATENDATEI = Path("patienten.json")
 class PatientVerwaltung:
 
 
+
     def __init__(self)-> None:
         self._patienten : list[Patient] = []
         self._naechste_id = 1
 
+    def notiz_setzen(self, patient_id: int, text: str) -> bool:
+        text = text.strip()
+        if not text:
+            return False
+        for patient in self._patienten:
+            if patient.patient_id == patient_id:
+                patient.notizen = text
+                return True
+        return False
     def statistik(self) -> dict:
         if not self._patienten:
             return {"anzahl": 0, "durchschnittsalter": 0.0, "aeltester": None, "juengster": None}
