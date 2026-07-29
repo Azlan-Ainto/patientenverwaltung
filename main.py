@@ -1,7 +1,12 @@
 
 """Einstiegspunkt zum manuellen Testen der Patientenverwaltung."""
 from datetime import date
+from patient import Patient
 from patverw import PatientVerwaltung
+
+
+def patienten_sortiert(self, absteigend: bool = False) -> list[Patient]:
+        return sorted(self._patienten, key=lambda p: p.nachname.lower(), reverse=absteigend)
 
 def datum_einlesen(text:str)->date:
     jahr, monat, tag = map(int, input(text).split("-"))
@@ -89,11 +94,7 @@ def main() -> None:
                 print(f"Jüngster Patient: {stats['juengster']}")
 
         elif auswahl == "9":
-<<<<<<< HEAD
-            print("Programm wird beendet.")
-=======
             print("Bis bald in der Patientenverwaltung!")
->>>>>>> feature/abschiedstext
             break
         else:
             print("Ungültige Auswahl, bitte erneut versuchen.")
