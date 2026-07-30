@@ -1,6 +1,7 @@
 
 """Einstiegspunkt zum manuellen Testen der Patientenverwaltung."""
 from datetime import date
+from patient import Patient
 from patverw import PatientVerwaltung
 
 def datum_einlesen(text:str)->date:
@@ -18,8 +19,8 @@ def zeige_menue() -> None:
     print("6. Notiz hinzufügen")
     print("7. Patienten sortiert anzeigen (nach Nachname)")
     print("8. Statistik anzeigen")
-    print("9. Beenden")
-
+    print("9. Patient nach ID anzeigen")
+    print("10. Beenden")
 
 def main() -> None:
     praxis = PatientVerwaltung()
@@ -89,14 +90,18 @@ def main() -> None:
                 print(f"Jüngster Patient: {stats['juengster']}")
 
         elif auswahl == "9":
-<<<<<<< HEAD
-            print("Programm wird beendet.")
-=======
+            patient_id = int(input("Patienten-ID: "))
+            gefunden = praxis.patient_suchen_nach_id(patient_id)
+            if gefunden:
+                print(gefunden)
+                if gefunden.notizen:
+                    print(f"Notizen: {gefunden.notizen}")
+            else:
+                print("Kein Patient mit dieser ID gefunden.")
+
+        elif auswahl == "10":
             print("Bis bald in der Patientenverwaltung!")
->>>>>>> feature/abschiedstext
             break
-        else:
-            print("Ungültige Auswahl, bitte erneut versuchen.")
 
 if __name__ == "__main__":
     main()
