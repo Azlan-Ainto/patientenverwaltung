@@ -17,3 +17,7 @@ class Patient:
         datum = self.geburtsdatum.strftime("%d.%m.%Y")
         notiz_hinweis = " [Notiz vorhanden]" if self.notizen else ""
         return f"[{self.patient_id}] {self.vorname} {self.nachname} (geb. {datum}, Tel: {self.telefonnummer or '-'}){notiz_hinweis}"
+
+    @property
+    def vollname(self) -> str:
+        return f"{self.vorname} {self.nachname}"
