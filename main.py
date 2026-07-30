@@ -4,10 +4,6 @@ from datetime import date
 from patient import Patient
 from patverw import PatientVerwaltung
 
-
-def patienten_sortiert(self, absteigend: bool = False) -> list[Patient]:
-        return sorted(self._patienten, key=lambda p: p.nachname.lower(), reverse=absteigend)
-
 def datum_einlesen(text:str)->date:
     jahr, monat, tag = map(int, input(text).split("-"))
     return date(jahr, monat, tag)
@@ -93,15 +89,15 @@ def main() -> None:
                 print(f"Ältester Patient: {stats['aeltester']}")
                 print(f"Jüngster Patient: {stats['juengster']}")
 
-            elif auswahl == "9":
-                patient_id = int(input("Patienten-ID: "))
-                gefunden = praxis.patient_suchen_nach_id(patient_id)
-                if gefunden:
-                    print(gefunden)
-                    if gefunden.notizen:
-                        print(f"Notizen: {gefunden.notizen}")
-                else:
-                    print("Kein Patient mit dieser ID gefunden.")
+        elif auswahl == "9":
+            patient_id = int(input("Patienten-ID: "))
+            gefunden = praxis.patient_suchen_nach_id(patient_id)
+            if gefunden:
+                print(gefunden)
+                if gefunden.notizen:
+                    print(f"Notizen: {gefunden.notizen}")
+            else:
+                print("Kein Patient mit dieser ID gefunden.")
 
         elif auswahl == "10":
             print("Bis bald in der Patientenverwaltung!")
