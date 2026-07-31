@@ -20,7 +20,8 @@ def zeige_menue() -> None:
     print("7. Patienten sortiert anzeigen (nach Nachname)")
     print("8. Statistik anzeigen")
     print("9. Patient nach ID anzeigen")
-    print("10. Beenden")
+    print("10. Als CSV exportieren")
+    print("11. Beenden")
 
 def main() -> None:
     praxis = PatientVerwaltung()
