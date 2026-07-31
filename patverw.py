@@ -3,6 +3,7 @@ from patient import Patient
 from datetime import date
 import json
 from pathlib import Path
+import csv
 DATENDATEI = Path("patienten.json")
 class PatientVerwaltung:
 
@@ -11,6 +12,16 @@ class PatientVerwaltung:
     def __init__(self)-> None:
         self._patienten : list[Patient] = []
         self._naechste_id = 1
+
+
+    def patienten_als_csv_exportieren(self, dateipfad: Path) -> None:
+        with dateipfad.open("w", newline="", encoding="utf-8") as datei:
+            writer = csv.writer(datei)
+            writer.writerow(["ID", "Vorname", "Nachname", "Geburtsdatum", "Telefonnummer", "Notizen"])
+            for p in self._patienten:
+                writer.writerow(
+                    [p.patient_id, p.vorname, p.nachname, p.geburtsdatum.isoformat(), p.telefonnummer, p.notizen]
+                )
 
     def notiz_setzen(self, patient_id: int, text: str) -> bool:
         text = text.strip()
@@ -126,7 +137,7 @@ class PatientVerwaltung:
             self._naechste_id = max(patient.patient_id for patient in self._patienten) + 1
         else:
             self._naechste_id = 1
-    
+
 
     def patient_suchen_nach_id(self, patient_id: int) -> Patient | None:
         for patient in self._patienten:
