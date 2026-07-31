@@ -126,3 +126,10 @@ class PatientVerwaltung:
             self._naechste_id = max(patient.patient_id for patient in self._patienten) + 1
         else:
             self._naechste_id = 1
+    
+
+    def patient_suchen_nach_id(self, patient_id: int) -> Patient | None:
+        for patient in self._patienten:
+            if patient.patient_id == patient_id:
+                return patient
+        return None
