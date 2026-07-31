@@ -12,6 +12,16 @@ class PatientVerwaltung:
         self._patienten : list[Patient] = []
         self._naechste_id = 1
 
+
+    def patienten_als_csv_exportieren(self, dateipfad: Path) -> None:
+        with dateipfad.open("w", newline="", encoding="utf-8") as datei:
+            writer = csv.writer(datei)
+            writer.writerow(["ID", "Vorname", "Nachname", "Geburtsdatum", "Telefonnummer", "Notizen"])
+            for p in self._patienten:
+                writer.writerow(
+                    [p.patient_id, p.vorname, p.nachname, p.geburtsdatum.isoformat(), p.telefonnummer, p.notizen]
+                )
+
     def notiz_setzen(self, patient_id: int, text: str) -> bool:
         text = text.strip()
         if not text:
