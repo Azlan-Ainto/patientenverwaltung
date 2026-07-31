@@ -3,6 +3,7 @@ from patient import Patient
 from datetime import date
 import json
 from pathlib import Path
+import csv
 DATENDATEI = Path("patienten.json")
 class PatientVerwaltung:
 
