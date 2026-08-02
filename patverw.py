@@ -144,3 +144,7 @@ class PatientVerwaltung:
             if patient.patient_id == patient_id:
                 return patient
         return None
+
+    def patienten_als_csv_exportieren(self, dateipfad: Path) -> None:
+        with dateipfad.open("w", newline="", encoding="utf-8") as datei:
+            writer = csv.writer(datei, delimiter=";")
